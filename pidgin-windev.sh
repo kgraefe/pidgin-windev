@@ -124,7 +124,8 @@ extract() {
         bzip2)   tar -xjf             "$compressed"  --directory "$directory" "${files[@]}" ;;
         gzip)    tar -xzf             "$compressed"  --directory "$directory" ;;
         zip)     unzip -qo${files:+j} "$compressed" "${files[@]}" -d "$directory" ;;
-    esac || exit
+        *)       oops "Failed extracting $compressed";;
+    esac
 }
 
 install() {
