@@ -140,11 +140,11 @@ install() {
 
 # Path configuration
 if [[ -n "$path" ]]; then
-    printf "export PATH='"
-    printf "${win32}/${mingw}/bin:"
-    printf "${win32}/${perl_dir}/perl/bin:"
-    printf "${win32}/${nsis}:"
-    printf "${PATH}'"
+    printf "export PATH=\""
+    printf "%q" "${win32}/${mingw}/bin:"
+    printf "%q" "${win32}/${perl_dir}/perl/bin:"
+    printf "%q" "${win32}/${nsis}:"
+    printf "\${PATH}\"\n"
     exit
 fi
 
