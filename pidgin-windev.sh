@@ -123,6 +123,7 @@ extract() {
         lzma)    tar --lzma -xf       "$compressed"  --directory "$directory" ;;
         bzip2)   tar -xjf             "$compressed"  --directory "$directory" "${files[@]}" ;;
         gzip)    tar -xzf             "$compressed"  --directory "$directory" ;;
+        xz)      tar -xJf             "$compressed"  --directory "$directory" ;;
         zip)     unzip -qo${files:+j} "$compressed" "${files[@]}" -d "$directory" ;;
         *)       oops "Failed extracting $compressed";;
     esac
