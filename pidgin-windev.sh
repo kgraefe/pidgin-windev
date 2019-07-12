@@ -247,8 +247,14 @@ echo
 # Extract Pidgin
 step "Extracting Pidgin source code"
 extract bzip2 "$devroot" "${cache}/pidgin-${pidgin_version}.tar.bz2" && info 'Extracted to' "$source_directory"
-echo 'MONO_SIGNCODE = echo ***Bypassing signcode***' >  "${source_directory}/local.mak"
-echo 'GPG_SIGN = echo ***Bypassing gpg***'           >> "${source_directory}/local.mak"
+cat >"${source_directory}/local.mak" <<EOF
+export PATH:=\$(PIDGIN_TREE_TOP)/../win32-dev/${nsis}:\$(PATH)
+export PATH:=\$(PIDGIN_TREE_TOP)/../win32-dev/${perl_dir}/perl/bin:\$(PATH)
+export PATH:=\$(PIDGIN_TREE_TOP)/../win32-dev/${mingw}/bin:\$(PATH)
+
+MONO_SIGNCODE = echo ***Bypassing signcode***
+GPG_SIGN = echo ***Bypassing gpg***
+EOF
 [[ "${system}" = Msys ]] && patch -p2 --directory "${source_directory}" < "$(dirname "$0")/pidgin-wget-msys.patch"
 echo
 
