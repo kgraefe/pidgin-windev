@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="2017.06.08"
-pidgin_version="2.12.0"
+pidgin_version="2.13.0"
 devroot="$1"
 path="$2"
 
@@ -185,7 +185,7 @@ echo
 
 # Download GCC
 step "Downloading specific MinGW GCC"
-download "${cache}/${mingw}" "${mingw_base_url}/binutils/binutils-2.28/binutils-2.28-1-mingw32-bin.tar.xz/download"
+download "${cache}/${mingw}" "${mingw_base_url}/binutils/binutils-2.24/binutils-2.24-1-mingw32-bin.tar.xz/download"
 download "${cache}/${mingw}" "${mingw_base_url}/gcc/Version4/gcc-4.7.2-1/gcc-core-4.7.2-1-mingw32-bin.tar.lzma/download"
 download "${cache}/${mingw}" "${mingw_base_url}/gcc/Version4/gcc-4.7.2-1/${gcc_source}.tar.lzma/download"
 download "${cache}/${mingw}" "${mingw_base_url}/gcc/Version4/gcc-4.7.2-1/libgcc-4.7.2-1-mingw32-dll-1.tar.lzma/download"
